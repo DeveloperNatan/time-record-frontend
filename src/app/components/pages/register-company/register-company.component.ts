@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
+import { RegisterService } from '../../../services/register.service';
 
 @Component({
   selector: 'app-register-company',
@@ -11,26 +11,27 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class RegisterCompanyComponent {
   private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
+  private registerService = inject(RegisterService);
 
-  loginForm = this.fb.group({
+  registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    passwordHash: [''],
+    password: [''],
+    companyName: ['']
   });
 
   onSubmit() {
     console.log('Botão clicado');
-    console.log(this.loginForm.value);
-    console.log(this.loginForm.valid);
+    console.log(this.registerForm.value);
+    console.log(this.registerForm.valid);
 
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
       return;
     }
 
-    const { email, passwordHash: passwordHash } = this.loginForm.getRawValue();
+    const { email, password, companyName } = this.registerForm.getRawValue();
 
-    this.authService.login(email!, passwordHash!).subscribe({
+    this.registerService.register(email!, password!, companyName!).subscribe({
       next: (resposta) => {
         console.log('Login realizado:', resposta);
       },
