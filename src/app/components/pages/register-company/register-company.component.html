@@ -1,0 +1,132 @@
+<main class="flex min-h-screen bg-white">
+  <!-- Painel de login: 30% no desktop -->
+  <section
+    class="flex min-h-screen w-full items-center justify-center border-r border-slate-200 px-6 py-10 lg:w-[30%] lg:min-w-[380px] lg:px-10"
+  >
+    <div class="w-full max-w-sm">
+      <!-- Marca -->
+      <div class="mb-16 flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-lg">
+          <img
+            src="favicon.ico"
+            alt="Logo Time Record"
+            class="h-full w-full object-cover"
+          />
+        </div>
+
+        <div>
+          <strong class="block text-base tracking-tight text-slate-900">
+            Login - Colaborador
+          </strong>
+
+          <span class="mt-0.5 block text-xs text-slate-500">
+            Gestão de pessoas
+          </span>
+        </div>
+      </div>
+
+      <!-- Mensagem de boas-vindas -->
+      <div class="mb-8">
+        <h1 class="mb-2 text-3xl font-bold tracking-tight text-slate-900">
+          Bem-vindo de volta
+        </h1>
+
+        <p class="text-sm leading-6 text-slate-500">
+          Acesse sua conta para gerenciar suas jornadas de trabalhos.
+        </p>
+      </div>
+
+      <!-- Formulário -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-5">
+        <div>
+          <label
+            for="email"
+            class="mb-2 block text-sm font-semibold text-slate-700"
+          >
+            E-mail
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="seuemail@empresa.com"
+            autocomplete="email"
+            class="w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-700"
+          />
+        </div>
+
+        <div>
+          <div class="mb-2 flex items-center justify-between">
+            <label for="passwordHash" class="text-sm font-semibold text-slate-700">
+              Senha
+            </label>
+
+            <a
+              href="#"
+              class="text-xs font-semibold text-emerald-700 hover:underline"
+            >
+              Esqueci minha senha
+            </a>
+          </div>
+
+          <input
+            id="passwordHash"
+            type="password"
+            formControlName="passwordHash"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+            class="w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-700"
+          />
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="w-full rounded-md bg-emerald-700 px-4 py-3 text-sm font-bold text-white hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Entrar
+        </button>
+      </form>
+
+      <p class="mt-7 text-center text-xs text-slate-500">
+        Problemas para acessar?
+        <a
+          href="mailto:suporte@timerecord.com"
+          class="font-semibold text-emerald-700 hover:underline"
+        >
+          Fale com o suporte
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Painel visual: 70% no desktop -->
+  <section class="relative hidden min-h-screen overflow-hidden lg:block lg:w-[70%]">
+    <img
+      src="assets/logo.jpeg"
+      alt="Profissionais trabalhando em equipe"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+
+    <!-- Fundo sólido para garantir leitura do texto, sem gradiente -->
+    <div class="absolute inset-0 bg-slate-950/45"></div>
+
+    <div class="absolute bottom-[12%] left-[9%] z-10 max-w-2xl text-white">
+      <span
+        class="inline-block rounded-md border border-white px-3 py-2 text-[11px] font-bold tracking-widest"
+      >
+        GESTÃO DE PESSOAS
+      </span>
+
+      <h2 class="mt-5 text-5xl font-bold leading-tight tracking-tight xl:text-7xl">
+        Tempo bem gerenciado.<br />
+        Pessoas valorizadas.
+      </h2>
+
+      <p class="mt-5 max-w-lg text-base leading-7 text-white xl:text-lg">
+        Centralize o controle de ponto e simplifique a rotina da sua empresa.
+      </p>
+    </div>
+  </section>
+</main>
