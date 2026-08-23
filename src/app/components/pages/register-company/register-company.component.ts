@@ -5,7 +5,7 @@ import { RegisterService } from '../../../services/register.service';
 @Component({
   selector: 'app-register-company',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './register-company.component.html',
   styleUrl: './register-company.component.scss',
 })

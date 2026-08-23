@@ -37,7 +37,7 @@
       </div>
 
       <!-- Formulário -->
-      <form /*[formGroup]="loginForm"*/ (ngSubmit)="onSubmit()" class="space-y-5">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-5">
         <div>
           <label
             for="email"
