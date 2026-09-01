@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
         console.log('Ponto marcado:', horarioFormatado);
 
         // Atualiza a ultima marcacao
-        this.ultimaMarcacao = `Hoje, ${horarioFormatado} - Entrada`;
+        this.ultimaMarcacao = `Hoje, ${horarioFormatado}`;
 
         // Feedback visual (opcional - pode substituir por toast/notificacao)
         alert(`Ponto marcado com sucesso!\nHorario: ${horarioFormatado}`);
