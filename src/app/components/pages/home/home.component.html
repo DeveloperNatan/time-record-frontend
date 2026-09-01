@@ -1,1 +1,196 @@
-<p>home works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RH Time Record - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .navbar-menu a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .navbar-menu a:hover {
+            color: #3498db;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 70px);
+            padding: 2rem;
+        }
+
+        .welcome-text {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Mark Point Button */
+        .mark-point-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-mark-point {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-mark-point:hover {
+            background-color: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-mark-point:active {
+            transform: translateY(0);
+        }
+
+        .current-time {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .navbar-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .welcome-text {
+                font-size: 1.4rem;
+            }
+
+            .btn-mark-point {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">RH Time Record</a>
+        <ul class="navbar-menu">
+            <li><a href="/folha">Folha</a></li>
+            <li><a href="/ferias">Ferias</a></li>
+            <li><a href="/meus-pontos">Meus Pontos</a></li>
+            <li><a href="/configuracoes">Configuraç°°es</a></li>
+            <li><a href="/perfil">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="welcome-text">Bem-vindo ao RH Time Record</h1>
+        
+        <div class="mark-point-container">
+            <button class="btn-mark-point" onclick="marcarPonto()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Marcar Ponto
+            </button>
+            <div class="current-time" id="currentTime">
+                Carregando horário...
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Atualiza o horário atual
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('currentTime').textContent = now.toLocaleDateString('pt-BR', options);
+        }
+
+        // Funcao para marcar ponto (placeholder)
+        function marcarPonto() {
+            const now = new Date();
+            alert(`Ponto marcado com sucesso!\nHorario: ${now.toLocaleTimeString('pt-BR')}`);
+            // Aqui voce integraria com sua API backend
+        }
+
+        // Atualiza o relogio a cada segundo
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
