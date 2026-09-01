@@ -1,11 +1,19 @@
-<div align="center">
-  <img src="src/assets/clock.jpg" alt="RH Time Record Logo" width="120" height="120" style="border-radius: 12px;" />
-
-  # RH Time Record
-
-  Sistema de gestão de ponto e RH para colaboradores.
-
-</div>
+<table>
+  <tr>
+    <td>
+      <img
+        src="./src/assets/clock.jpeg"
+        alt="RH Time Record Logo"
+        width="100"
+        height="100"
+      />
+    </td>
+    <td>
+      <h1>RH Time Record</h1>
+      <p>Sistema de gestão de ponto e RH para colaboradores.</p>
+    </td>
+  </tr>
+</table>
 
 ---
 
