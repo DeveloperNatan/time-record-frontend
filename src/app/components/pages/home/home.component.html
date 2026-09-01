@@ -82,11 +82,11 @@
         <div class="mt-auto pt-6">
             <div class="flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-3">
                 <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-700 text-white font-bold">
-                    {{ usuario.nome.charAt(0).toUpperCase() }}
+                    {{ user.name.charAt(0).toUpperCase() }}
                 </div>
                 <div>
-                    <p class="text-sm font-semibold text-slate-900">{{ usuario.nome }}</p>
-                    <p class="text-xs text-slate-500">{{ usuario.cargo }}</p>
+                    <p class="text-sm font-semibold text-slate-900">{{ user.name }}</p>
+                    <p class="text-xs text-slate-500">{{ user.role }}</p>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
             <!-- Saudacao -->
             <div class="mb-12">
                 <h1 class="mb-3 text-4xl font-bold tracking-tight text-slate-900 lg:text-5xl">
-                    Olá, {{ usuario.nome }}!
+                    Olá, {{ user.name }}!
                 </h1>
                 <p class="text-lg text-slate-500">
                     Registre seu ponto de forma rápida e simples.
@@ -108,7 +108,7 @@
             <!-- Botao circular de marcar ponto -->
             <div class="mb-8 flex items-center justify-center">
                 <button
-                    (click)="marcarPonto()"
+                    (click)="clockIn()"
                     class="group relative flex h-56 w-56 items-center justify-center rounded-full bg-emerald-700 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-emerald-800 hover:shadow-emerald-700/30 focus:outline-none focus:ring-4 focus:ring-emerald-700/30 lg:h-64 lg:w-64"
                 >
                     <!-- Anel externo decorativo -->
@@ -130,7 +130,7 @@
             <!-- Horario atual -->
             <div class="rounded-full bg-slate-100 px-6 py-3 inline-block">
                 <p class="text-sm font-medium text-slate-600">
-                    {{ horarioAtual }}
+                    {{ currentTime }}
                 </p>
             </div>
 
@@ -138,7 +138,7 @@
             <div class="mt-8 text-center">
                 <p class="text-sm text-slate-500">
                     Última marcação:
-                    <span class="font-semibold text-slate-700">{{ ultimaMarcacao }}</span>
+                    <span class="font-semibold text-slate-700">{{ lastHour }}</span>
                 </p>
             </div>
         </div>

@@ -9,22 +9,22 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  horarioAtual : string ='';
-  ultimaMarcacao: string = 'Hoje, 07:00';
+  currentTime : string ='';
+  lastHour: string = 'Hoje, 07:00';
 
-    usuario = {
-        nome: 'Natan',
-        cargo: 'Desenvolvedor'
+    user = {
+        name: 'Natan',
+        role: 'Desenvolvedor'
     };
 
     ngOnInit(): void {
-      this.atualizarHorario();
-      setInterval(()=> this.atualizarHorario(), 1000);
+      this.updateTime();
+      setInterval(()=> this.updateTime(), 1000);
     }
 
-    atualizarHorario(): void {
+    updateTime(): void {
       const now = new Date();
-      this.horarioAtual = now.toLocaleDateString('pt-BR', {
+      this.currentTime = now.toLocaleDateString('pt-BR', {
         weekday: 'long',
             year: 'numeric',
             month: 'long',
@@ -35,17 +35,17 @@ export class HomeComponent implements OnInit {
       })
     }
 
-    marcarPonto(): void {
+    clockIn(): void {
         const now = new Date();
-        const horarioFormatado = now.toLocaleTimeString('pt-BR');
+        const formattedTime = now.toLocaleTimeString('pt-BR');
 
         // Aqui voce integraria com sua API backend
-        console.log('Ponto marcado:', horarioFormatado);
+        console.log('Ponto marcado:', formattedTime);
 
         // Atualiza a ultima marcacao
-        this.ultimaMarcacao = `Hoje, ${horarioFormatado}`;
+        this.lastHour = `Hoje, ${formattedTime}`;
 
         // Feedback visual (opcional - pode substituir por toast/notificacao)
-        alert(`Ponto marcado com sucesso!\nHorario: ${horarioFormatado}`);
+        alert(`Ponto marcado com sucesso!\nHorario: ${formattedTime}`);
     }
 }
