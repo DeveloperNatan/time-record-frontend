@@ -1,27 +1,81 @@
-# TimeRecordFrontend
+<table>
+  <tr>
+    <td>
+      <img
+        src="./src/assets/clock.jpeg"
+        alt="RH Time Record Logo"
+        width="100"
+        height="100"
+      />
+    </td>
+    <td>
+      <h1>RH Time Record</h1>
+      <p>Sistema de gestão de ponto e RH para colaboradores.</p>
+    </td>
+  </tr>
+</table>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+---
 
-## Development server
+## 📋 Sobre o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O **RH Time Record** é uma aplicação web para controle de ponto eletrônico, permitindo que colaboradores registrem entradas e saídas, acompanhem seu histórico de horas, solicitem férias e gerenciem informações de perfil de forma simples e centralizada.
 
-## Code scaffolding
+## ✨ Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Clock In/Out** — Registro de ponto com um clique
+- **Folha de pagamento** — Consulta de holerites e descontos
+- **Férias** — Solicitação e acompanhamento de períodos
+- **Meus pontos** — Histórico de marcações
+- **Perfil** — Dados pessoais e profissionais
+- **Configurações** — Preferências da conta
 
-## Build
+## 🚀 Tecnologias
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular** — Framework front-end
+- **TypeScript** — Linguagem principal
+- **Tailwind CSS** — Estilização
+- **Node.js / Express** — API back-end
+- **Git** — Controle de versão
 
-## Running unit tests
+## 📦 Como executar
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+# Clonar o repositório
+git clone https://github.com/seu-usuario/rh-time-record.git
 
-## Running end-to-end tests
+# Entrar na pasta do projeto
+cd rh-time-record
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Instalar dependências
+npm install
 
-## Further help
+# Rodar em ambiente de desenvolvimento
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Acesse `http://localhost:4200` no navegador.
+
+## 📁 Estrutura do projeto
+
+```
+src/
+├── app/
+│   ├── home/
+│   ├── folha/
+│   ├── ferias/
+│   ├── meus-pontos/
+│   ├── configuracoes/
+│   └── perfil/
+├── assets/
+│   └── clock.jpg
+└── environments/
+```
+
+## 👤 Autor
+
+Desenvolvido por **Natan** — Estudante de Engenharia de Software e desenvolvedor C#/.NET.
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
