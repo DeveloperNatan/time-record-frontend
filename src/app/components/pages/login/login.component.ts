@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
@@ -9,7 +9,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent  {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
 
@@ -18,10 +18,9 @@ export class LoginComponent {
     passwordHash: [''],
   });
 
+
   onSubmit() {
-    console.log('Botão clicado');
-    console.log(this.loginForm.value);
-    console.log(this.loginForm.valid);
+
 
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
