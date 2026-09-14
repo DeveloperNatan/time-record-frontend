@@ -16,7 +16,7 @@ export const routes: Routes = [
     title: 'Sign Up - Empresa',
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
     title: "Home - TimeRecord"
   }
