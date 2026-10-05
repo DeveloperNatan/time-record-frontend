@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,7 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent  {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -20,8 +23,6 @@ export class LoginComponent  {
 
 
   onSubmit() {
-
-
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -31,7 +32,7 @@ export class LoginComponent  {
 
     this.authService.login(email!, passwordHash!).subscribe({
       next: (resposta) => {
-        console.log('Login realizado:', resposta);
+        this.router.navigate(['/home']);
       },
       error: (erro) => {
         console.error('Erro ao fazer login:', erro);

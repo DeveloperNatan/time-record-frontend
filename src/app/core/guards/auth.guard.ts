@@ -2,7 +2,7 @@ import { inject, Inject } from "@angular/core";
 import { CanActivateChildFn, Router } from "@angular/router";
 import { catchError, map, of } from "rxjs";
 import { AuthService } from "../../services/auth.service";
-import { state } from "@angular/animations";
+
 
 export const authGuard: CanActivateChildFn = (route, state) => {
     const authService = inject(AuthService);
