@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterService } from '../../../services/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-company',
@@ -12,6 +13,7 @@ import { RegisterService } from '../../../services/register.service';
 export class RegisterCompanyComponent {
   private fb = inject(FormBuilder);
   private registerService = inject(RegisterService);
+  private router = inject(Router);
 
   registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -20,10 +22,7 @@ export class RegisterCompanyComponent {
   });
 
   onSubmit() {
-    console.log('Botão clicado');
-    console.log(this.registerForm.value);
-    console.log(this.registerForm.valid);
-
+    
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
@@ -33,7 +32,7 @@ export class RegisterCompanyComponent {
 
     this.registerService.register(email!, password!, companyName!).subscribe({
       next: (resposta) => {
-        console.log('Login realizado:', resposta);
+        this.router.navigate(['/home']);
       },
       error: (erro) => {
         console.error('Erro ao fazer login:', erro);

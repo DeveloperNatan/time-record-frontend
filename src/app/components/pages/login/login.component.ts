@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent  {
+export class LoginComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  public errorMessage: string = '';
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -35,7 +36,12 @@ export class LoginComponent  {
         this.router.navigate(['/home']);
       },
       error: (erro) => {
-        console.error('Erro ao fazer login:', erro);
+        if (erro.status == 404) {
+          this.errorMessage = 'Email não encontrado';
+        } else {
+          this.errorMessage = 'erro ao realzar login';
+        }
+
       },
     });
   }
