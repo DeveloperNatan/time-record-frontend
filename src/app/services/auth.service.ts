@@ -7,9 +7,16 @@ interface LoginRequest {
   password: string;
 }
 
+interface CurrentUserResponse{
+  authenticated: boolean;
+  email: string;
+  userId: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   private http = inject(HttpClient);
 
@@ -22,5 +29,9 @@ export class AuthService {
     };
 
     return this.http.post(`${this.apiUrl}/api/auth/login`, dados);
+  }
+
+  getCurrentuUser(){
+    return this.http.get<CurrentUserResponse>(`${this.apiUrl}/api/auth/me`)
   }
 }

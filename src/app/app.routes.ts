@@ -2,9 +2,11 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterCompanyComponent } from './components/pages/register-company/register-company.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'sign-up', pathMatch: 'full' },
+  // { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+
   {
     path: 'sign-in',
     component: LoginComponent,
@@ -16,8 +18,9 @@ export const routes: Routes = [
     title: 'Sign Up - Empresa',
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
-    title: "Home - TimeRecord"
+    title: 'Home - TimeRecord',
+    canActivate: [authGuard]
   }
 ];
