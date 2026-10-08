@@ -29,7 +29,7 @@ export class LoginComponent {
       return;
     }
 
-    const { email, passwordHash: passwordHash } = this.loginForm.getRawValue();
+    const { email, passwordHash } = this.loginForm.getRawValue();
 
     this.authService.login(email!, passwordHash!).subscribe({
       next: (resposta) => {

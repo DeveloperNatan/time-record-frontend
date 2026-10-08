@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { WhoAmi } from '../../../services/whoami.service';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +9,29 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
+
+ 
 export class HomeComponent implements OnInit {
+  private whoAmi = inject(WhoAmi);
+  public name: string = '';
+  public role: string = '';
   currentTime : string ='';
   lastHour: string = '';
-
-    user = {
-        name: 'Natan',
-        role: 'Desenvolvedor'
-    };
-
+ 
+   
     ngOnInit(): void {
       this.updateTime();
       setInterval(()=> this.updateTime(), 1000);
+
+      this.whoAmi.GetCurrentUser().subscribe({
+        next: (res)=>{
+          this.name = res.email;
+        },
+        error: (erro)=>{
+
+        }
+
+      })
     }
 
     updateTime(): void {
