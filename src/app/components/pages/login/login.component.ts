@@ -36,12 +36,17 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       },
       error: (erro) => {
-        if (erro.status == 404) {
-          this.errorMessage = 'Email não encontrado';
-        } else {
-          this.errorMessage = 'erro ao realzar login';
+        switch (erro.status) {
+          case 404:
+            this.errorMessage = 'Email não encontrado';
+            break;
+          case 401:
+            this.errorMessage = 'Sua senha está incorreta';
+            break;
+          default:
+            this.errorMessage = 'Ocorreu algum erro inesperado ao realizar login';
+            break;
         }
-
       },
     });
   }
