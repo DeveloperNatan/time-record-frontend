@@ -7,6 +7,7 @@ interface CurrentUser {
     email: string;
     userId: string;
     name: string;
+    job: string;
 }
 
 @Injectable({

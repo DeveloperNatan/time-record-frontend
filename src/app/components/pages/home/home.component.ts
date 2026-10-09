@@ -17,6 +17,11 @@ export class HomeComponent implements OnInit {
   public role: string = '';
   currentTime : string ='';
   lastHour: string = '';
+  isMenuOpen = false;
+
+  toggleMenu():void{
+    this.isMenuOpen = !this.isMenuOpen;
+  }
  
    
     ngOnInit(): void {
@@ -26,6 +31,7 @@ export class HomeComponent implements OnInit {
       this.whoAmi.GetCurrentUser().subscribe({
         next: (res)=>{
           this.name = res.name;
+          this.role = res.job;
         },
         error: (erro)=>{
 
@@ -37,10 +43,6 @@ export class HomeComponent implements OnInit {
     updateTime(): void {
       const now = new Date();
       this.currentTime = now.toLocaleDateString('pt-BR', {
-        weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit'
