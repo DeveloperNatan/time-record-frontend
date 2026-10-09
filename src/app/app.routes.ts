@@ -5,12 +5,10 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-
   {
     path: 'sign-in',
     component: LoginComponent,
-    title: 'Sign In - Colaborador',
+    title: 'Sign In',
   },
   {
     path: 'sign-up',
@@ -20,7 +18,13 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    title: 'Home - TimeRecord',
+    title: 'Home',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'profile',
+    component: RegisterCompanyComponent,
+    title: "Profile",
     canActivate: [authGuard]
   }
 ];

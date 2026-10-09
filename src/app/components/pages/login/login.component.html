@@ -60,8 +60,13 @@
           Entrar
         </button>
       </form>
+      @if(errorMessage) {
+        <p class="mt-6 text-center text-xs text-red-500">
+          {{errorMessage}}
+        </p>
+      }
 
-      <p class="mt-7 text-center text-xs text-slate-500">
+      <p class="mt-6 text-center text-xs text-slate-500">
         Problemas para acessar?
         <a href="mailto:suporte@timerecord.com" class="font-semibold text-emerald-700 hover:underline">
           Fale com o suporte
