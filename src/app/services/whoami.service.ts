@@ -6,6 +6,7 @@ interface CurrentUser {
     authenticated: boolean;
     email: string;
     userId: string;
+    name: string;
 }
 
 @Injectable({

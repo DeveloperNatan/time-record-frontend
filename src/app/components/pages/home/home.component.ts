@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
       this.whoAmi.GetCurrentUser().subscribe({
         next: (res)=>{
-          this.name = res.email;
+          this.name = res.name;
         },
         error: (erro)=>{
 
