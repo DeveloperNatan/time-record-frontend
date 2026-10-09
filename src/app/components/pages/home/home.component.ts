@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
     updateTime(): void {
       const now = new Date();
-      this.currentTime = now.toLocaleDateString('pt-BR', {
+      this.currentTime = now.toLocaleTimeString('pt-BR', {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit'
@@ -53,13 +53,8 @@ export class HomeComponent implements OnInit {
         const now = new Date();
         const formattedTime = now.toLocaleTimeString('pt-BR');
 
-        // Aqui voce integraria com sua API backend
-        console.log('Ponto marcado:', formattedTime);
-
-        // Atualiza a ultima marcacao
         this.lastHour = `Hoje, ${formattedTime}`;
 
-        // Feedback visual (opcional - pode substituir por toast/notificacao)
         alert(`Ponto marcado com sucesso!\nHorario: ${formattedTime}`);
     }
 }

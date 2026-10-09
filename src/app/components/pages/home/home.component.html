@@ -1,4 +1,4 @@
-<main class="min-h-screen bg-white lg:flex">
+<main class="min-h-screen w-full bg-white">
     <!-- Cabeçalho mobile -->
     <header class="flex items-center justify-between border-b border-slate-200 bg-white px-5 py-4 lg:hidden">
         <div class="flex items-center gap-3">
@@ -12,34 +12,42 @@
             </div>
         </div>
 
-        <button type="button"
+        <button
+            type="button"
             class="rounded-lg p-2 text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-700"
-            aria-label="Abrir ou fechar menu" aria-controls="main-navigation" [attr.aria-expanded]="isMenuOpen"
+            aria-label="Abrir ou fechar menu"
+            aria-controls="main-navigation"
+            [attr.aria-expanded]="isMenuOpen"
             (click)="toggleMenu()">
             @if (!isMenuOpen) {
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             } @else {
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
             }
         </button>
     </header>
 
-    <div class="lg:flex lg:min-h-screen">
+    <div class="min-h-screen w-full lg:flex">
+        <!-- Fundo de sobreposição no mobile -->
         @if (isMenuOpen) {
-    <button
-        type="button"
-        class="fixed inset-0 z-40 bg-black/40 lg:hidden"
-        aria-label="Fechar menu"
-        (click)="toggleMenu()">
-    </button>
-}
-        <!-- Menu: expansível no mobile, fixo no desktop -->
-        <section id="main-navigation" [class.-translate-x-full]="!isMenuOpen"
-            class="fixed inset-y-0 left-0 z-50 flex w-[min(85vw,320px)] flex-col overflow-y-auto border-r border-slate-200 bg-white px-6 py-6 shadow-xl transition-transform duration-300 ease-in-out lg:static lg:min-h-screen lg:w-[30%] lg:min-w-[320px] lg:translate-x-0 lg:overflow-visible lg:border-r lg:px-8 lg:py-10 lg:shadow-none">
+            <button
+                type="button"
+                class="fixed inset-0 z-40 bg-black/40 lg:hidden"
+                aria-label="Fechar menu"
+                (click)="toggleMenu()">
+            </button>
+        }
+
+        <!-- Menu lateral: drawer no mobile e sidebar no desktop -->
+        <section
+            id="main-navigation"
+            [class.-translate-x-full]="!isMenuOpen"
+            class="fixed inset-y-0 left-0 z-50 flex w-[min(85vw,320px)] flex-col overflow-y-auto border-r border-slate-200 bg-white px-6 py-6 shadow-xl transition-transform duration-300 ease-in-out lg:static lg:min-h-screen lg:w-[30%] lg:min-w-[320px] lg:shrink-0 lg:translate-x-0 lg:overflow-visible lg:px-8 lg:py-10 lg:shadow-none">
+
             <!-- Marca desktop -->
             <div class="mb-10 hidden items-center gap-3 lg:mb-16 lg:flex">
                 <div class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-lg">
@@ -52,22 +60,26 @@
             </div>
 
             <nav class="space-y-2" aria-label="Navegação principal">
-                <a routerLink="/records" (click)="isMenuOpen = false"
+                <a
+                    routerLink="/records"
+                    (click)="isMenuOpen = false"
                     class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-700 lg:py-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-clock-2 preview-icon">
+                        class="lucide lucide-clock-2 preview-icon" aria-hidden="true">
                         <circle cx="12" cy="12" r="10" />
                         <path d="M12 6v6l4-2" />
                     </svg>
                     <span>Meus pontos</span>
                 </a>
 
-                <a routerLink="/absences" (click)="isMenuOpen = false"
+                <a
+                    routerLink="/absences"
+                    (click)="isMenuOpen = false"
                     class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-700 lg:py-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-circle-x preview-icon">
+                        class="lucide lucide-circle-x preview-icon" aria-hidden="true">
                         <circle cx="12" cy="12" r="10" />
                         <path d="m15 9-6 6" />
                         <path d="m9 9 6 6" />
@@ -75,11 +87,13 @@
                     <span>Ausências</span>
                 </a>
 
-                <a routerLink="/scale" (click)="isMenuOpen = false"
+                <a
+                    routerLink="/scale"
+                    (click)="isMenuOpen = false"
                     class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-700 lg:py-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-calendar-cog preview-icon">
+                        class="lucide lucide-calendar-cog preview-icon" aria-hidden="true">
                         <path d="m15.228 16.852-.923-.383" />
                         <path d="m15.228 19.148-.923.383" />
                         <path d="M16 2v3" />
@@ -89,7 +103,7 @@
                         <path d="m19.53 21.696-.382-.924" />
                         <path d="m20.773 16.852.924-.383" />
                         <path d="m20.773 19.148.924.383" />
-                        <path d="M21 10.5V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h5.5" />
+                        <path d="M21 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5.5" />
                         <path d="M3 9h18" />
                         <path d="M8 2v3" />
                         <circle cx="18" cy="18" r="3" />
@@ -97,24 +111,27 @@
                     <span>Escala</span>
                 </a>
 
-                <a routerLink="/profile" (click)="isMenuOpen = false"
+                <a
+                    routerLink="/profile"
+                    (click)="isMenuOpen = false"
                     class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-700 lg:py-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-user-round preview-icon">
+                        class="lucide lucide-user-round preview-icon" aria-hidden="true">
                         <circle cx="12" cy="8" r="5" />
                         <path d="M20 21a8 8 0 0 0-16 0" />
                     </svg>
                     <span>Perfil</span>
                 </a>
 
-                <a routerLink="/settings" (click)="isMenuOpen = false"
+                <a
+                    routerLink="/settings"
+                    (click)="isMenuOpen = false"
                     class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-700 lg:py-4">
-                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-settings preview-icon">
-                        <path
-                            d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-settings preview-icon h-5 w-5" aria-hidden="true">
+                        <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
                         <circle cx="12" cy="12" r="3" />
                     </svg>
                     <span>Configurações</span>
@@ -123,8 +140,7 @@
 
             <div class="mt-8 border-t border-slate-200 pt-5 lg:mt-auto lg:border-0 lg:pt-6">
                 <div class="flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-3">
-                    <div
-                        class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-700 font-bold text-white">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-700 font-bold text-white">
                         {{ name.charAt(0).toUpperCase() }}
                     </div>
                     <div>
@@ -136,8 +152,7 @@
         </section>
 
         <!-- Conteúdo principal -->
-        <section
-            class="flex min-h-[calc(100vh-73px)] w-full items-center justify-center bg-gradient-to-br from-slate-50 to-white px-5 py-10 lg:min-h-screen lg:w-[70%] lg:px-10">
+        <section class="flex min-h-[calc(100vh-73px)] w-full flex-1 items-center justify-center bg-gradient-to-br from-slate-50 to-white px-5 py-10 lg:min-h-screen lg:px-10">
             <div class="w-full max-w-xl text-center">
                 <div class="mb-8 lg:mb-12">
                     <h1 class="mb-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -149,26 +164,25 @@
                 </div>
 
                 <div class="mb-8 flex items-center justify-center">
-                    <button type="button" (click)="clockIn()"
+                    <button
+                        type="button"
+                        (click)="clockIn()"
                         class="group relative flex h-48 w-48 items-center justify-center rounded-full bg-emerald-700 shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-emerald-800 hover:shadow-emerald-700/30 focus:outline-none focus:ring-4 focus:ring-emerald-700/30 sm:h-56 sm:w-56 lg:h-64 lg:w-64">
                         <div class="absolute inset-0 rounded-full border-4 border-emerald-200 opacity-30"></div>
                         <div class="flex flex-col items-center justify-center text-white">
                             <svg class="mb-3 h-14 w-14 sm:h-16 sm:w-16" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
                             </svg>
                             <span class="text-base font-bold tracking-wide sm:text-lg">MARCAR<br />PONTO</span>
                         </div>
-                        <div
-                            class="absolute inset-0 rounded-full bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-10">
-                        </div>
+                        <div class="absolute inset-0 rounded-full bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-10"></div>
                     </button>
                 </div>
 
                 <!-- Horário em destaque -->
-                <div
-                    class="mx-auto inline-flex flex-col items-center rounded-2xl border border-slate-200 bg-white px-8 py-5 shadow-sm">
+                <div class="mx-auto inline-flex flex-col items-center rounded-2xl border border-slate-200 bg-white px-8 py-5 shadow-sm">
                     <span class="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-500">
                         Horário atual
                     </span>
